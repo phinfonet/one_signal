@@ -28,11 +28,11 @@ defmodule OneSignal.API do
   end
 
   defp handle_response(%HTTPoison.Response{body: body, status_code: code}) when code in 200..299 do
-    {:ok, Poison.decode!(body)}
+    {:ok, Jason.decode!(body)}
   end
 
   defp handle_response(%HTTPoison.Response{body: body, status_code: _}) do
-    {:error, Poison.decode!(body)}
+    {:error, Jason.decode!(body)}
   end
 
 end
