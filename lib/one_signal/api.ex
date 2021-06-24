@@ -15,7 +15,7 @@ defmodule OneSignal.API do
   def post(url, body) do
     HTTPoison.start
 
-    req_body = Poison.encode!(body)
+    req_body = Jason.encode!(body)
 
     HTTPoison.post!(url, req_body, OneSignal.auth_header)
     |> handle_response
